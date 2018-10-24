@@ -14,4 +14,6 @@ Stock Data 정보
   
 * Part 2: Visualizing the data
 
+  Remember that this still isn't the actual Market Cap, its just a visual representation of the total amount of money being traded around using the time series. 
+  
   
