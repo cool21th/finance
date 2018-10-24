@@ -9,4 +9,9 @@ Stock Data 정보
 * Part 1: Getting Data
 
   Tesla Stock(TSLA on the NASDAQ)
+  Ford Stock
+  GM Stock
+  
+* Part 2: Visualizing the data
+
   
