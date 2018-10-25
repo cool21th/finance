@@ -70,3 +70,33 @@ car_comp.columns = ['Tesla Open', 'GM Open', 'Ford Open']
 
 scatter_matrix(car_comp, figsize=(8,8), alpha=0.2, hist_kwds={'bins':50})
 plt.show()
+
+
+# 6 Candle stick chart
+# https://matplotlib.org/examples/pylab_examples/finance_demo.html
+# py3.x matplotlib.finance -> mpl_finance
+from mpl_finance import candlestick_ohlc
+from matplotlib.dates import DateFormatter, date2num, WeekdayLocator, DayLocator, MONDAY
+ford_reset = ford.loc['2015-01-01':'2015-01-31'].reset_index()
+# print('111',ford_reset)
+# print('ford_reset.info()',ford_reset.info())
+
+ford_reset['date_ax'] = ford_reset['date'].apply(pd.to_datetime).apply(lambda date: date2num(date))
+# print('ford_reset!!!!', ford_reset['date_ax'])
+# print('ford values',ford_reset[['date_ax', 'open', 'high', 'low', 'close']].values)
+ford_values = [tuple(vals) for vals in ford_reset[['date_ax', 'open', 'high', 'low', 'close']].values]
+# print(ford_values)
+mondays = WeekdayLocator(MONDAY)
+alldays = DayLocator()
+weekFormatter = DateFormatter('%b %d')
+dayFormatter = DateFormatter('%d')
+
+fig, ax = plt.subplots()
+fig.subplots_adjust(bottom=0.2)
+ax.xaxis.set_major_locator(mondays)
+ax.xaxis.set_minor_locator(alldays)
+ax.xaxis.set_major_formatter(weekFormatter)
+
+candlestick_ohlc(ax, ford_values, width=0.6, colorup='g', colordown='r')
+
+plt.show()
