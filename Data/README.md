@@ -43,3 +43,9 @@ and grab securities data and read it in as a DataFrame
 3. Quantopian
     
     
+4. AlphaVantage
+
+5. Yahoo Finance(Shut down in 2017)
+
+        Python library yfinance
+
